@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // Create .d.ts files
+    "declaration": true,
+    // Set output directory for .d.ts files
+    "declarationDir": "dist/types",
+    // Create only .d.ts files
+    "emitDeclarationOnly": true
+  }
+}

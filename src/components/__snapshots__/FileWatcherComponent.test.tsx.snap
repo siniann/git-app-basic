@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`File Watcher should have description component rendered 1`] = `ShallowWrapper {}`;
+
+exports[`File Watcher should have file path rendered 1`] = `ShallowWrapper {}`;
+
+exports[`File Watcher should have no filepath rendered  1`] = `ShallowWrapper {}`;
+
+exports[`File Watcher should match snapshot 1`] = `ShallowWrapper {}`;

@@ -1,0 +1,86 @@
+{
+  "name": "git-office",
+  "version": "1.0.0",
+  "description": "Git Office",
+  "main": "main.ts",
+  "scripts": {
+    "test": "npm run test:coverage && npm run test:acceptance",
+    "test:unit": "jest $NODE_DEBUG_OPTION ./src",
+    "test:acceptance": "jest $NODE_DEBUG_OPTION ./acceptance",
+    "test:coverage": "npm run test:unit -- --coverage",
+    "test:watch": "npm run test:unit -- --watch",
+    "check": "npm run check:types && npm run check:lint",
+    "check:types": "tsc",
+    "check:lint": "eslint --ext .js --ext .jsx ./src ./acceptance",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build:storybook": "build-storybook -c .storybook -o out/storybook",
+    "prestart": "tsc && cp index.html dist/index.html",
+    "start": "electron ./dist/main.js",
+    "build": "electron-packager . GitOffice && cp icon.icns GitOffice-darwin-x64/GitOffice.app/Contents/Resources/electron.icns",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Git-Office\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mediatain/git-office.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mediatain/git-office/issues"
+  },
+  "homepage": "https://github.com/mediatain/git-office#readme",
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/register": "^7.6.0",
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "chokidar": "^3.3.0",
+    "csstype": "^2.6.7",
+    "electron": "^7.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "simple-git": "^1.126.0"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-typescript": "^7.6.0",
+    "@babel/runtime": "^7.6.3",
+    "@commitlint/cli": "^8.2.0",
+    "@material-ui/styles": "^4.5.2",
+    "@storybook/addon-storyshots": "^5.2.5",
+    "@storybook/react": "^5.2.5",
+    "@types/jest": "^24.0.20",
+    "@types/node": "^12.11.7",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-airbnb": "^4.1.0",
+    "electron-packager": "^14.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.2.0",
+    "fs-extra": "^8.1.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "jest-cucumber": "^2.0.11",
+    "material-ui": "^0.20.2",
+    "react-test-renderer": "^16.11.0",
+    "typescript": "^3.6.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --env HUSKY_GIT_PARAMS"
+    }
+  }
+}
